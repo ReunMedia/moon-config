@@ -1,0 +1,4 @@
+tasks:
+  # We don't run PHPStan as part of linting in this test
+  phpstan:
+    command: noop

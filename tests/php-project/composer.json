@@ -1,0 +1,26 @@
+{
+    "name": "kimmo/php-project",
+    "description": "test",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Kimmo Salmela",
+            "email": "kimmo.salmela@reun.eu"
+        }
+    ],
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.48",
+        "friendsofphp/php-cs-fixer": "^3.89"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kimmo\\PhpProject\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    }
+}
