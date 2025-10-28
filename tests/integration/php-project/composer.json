@@ -9,9 +9,18 @@
             "email": "kimmo.salmela@reun.eu"
         }
     ],
+    "require": {
+        "reun/moon-config": "@dev"
+    },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48",
         "friendsofphp/php-cs-fixer": "^3.89"
+    },
+    "repositories": {
+        "reun/moon-config": {
+            "type": "path",
+            "url": "../../../."
+        }
     },
     "autoload": {
         "psr-4": {

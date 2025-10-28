@@ -17,6 +17,9 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48"
     },
+    "bin": [
+        "bin/reun-moon-config.sh"
+    ],
     "config": {
         "allow-plugins": {
             "ergebnis/composer-normalize": true

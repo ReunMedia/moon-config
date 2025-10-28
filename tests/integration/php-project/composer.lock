@@ -4,8 +4,43 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7272e771af127bcf20997323a857f01",
-    "packages": [],
+    "content-hash": "0cccbee8c4d1005abf432220d3a4b972",
+    "packages": [
+        {
+            "name": "reun/moon-config",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../../../.",
+                "reference": "4a244363e8c87d8e050d449e4f926b8971ddb247"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.48"
+            },
+            "bin": [
+                "bin/reun-moon-config.sh"
+            ],
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kimmo Salmela",
+                    "email": "kimmo.salmela@reun.eu"
+                },
+                {
+                    "name": "Reun Media",
+                    "email": "company@reun.eu",
+                    "homepage": "https://reun.eu"
+                }
+            ],
+            "description": "Reun Media moon configuration",
+            "transport-options": {
+                "relative": true
+            }
+        }
+    ],
     "packages-dev": [
         {
             "name": "clue/ndjson-react",
@@ -3333,7 +3368,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "reun/moon-config": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},
