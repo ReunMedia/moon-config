@@ -1,0 +1,26 @@
+{
+    "name": "reun/moon-config",
+    "description": "Reun Media moon configuration",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kimmo Salmela",
+            "email": "kimmo.salmela@reun.eu"
+        },
+        {
+            "name": "Reun Media",
+            "email": "company@reun.eu",
+            "homepage": "https://reun.eu"
+        }
+    ],
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.48"
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    }
+}
