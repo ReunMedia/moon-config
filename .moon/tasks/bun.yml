@@ -1,0 +1,12 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+tasks:
+  test:
+    command: "bun test"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  dev:
+    command: "bun dev"

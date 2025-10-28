@@ -1,0 +1,56 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+tasks:
+  format:
+    command:
+      - "prettier"
+      # Use the same config for the entire repo
+      - "--config"
+      - "@in(0)"
+      # Use .prettierignore...
+      - "--ignore-path"
+      - "@in(1)"
+      # ... and .gitignore
+      - "--ignore-path"
+      - "@in(2)"
+      # Fail for unformatted code
+      - "--check"
+      # Run in current dir
+      - "."
+    inputs:
+      # Use project-specific configs that extend root config
+      - "prettier.config.mjs"
+      # Use global .prettierignore and .gitignore
+      - "/.prettierignore"
+      - "/.gitignore"
+      # Config and other files
+      - "**/*.{md,mdx,yml,yaml,json,js,mjs,ts}"
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  lint:
+    deps:
+      - format
+      - lint-package-json
+      - eslint
+
+  eslint:
+    command: "eslint"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+      - "**/eslint.config.mjs"
+      - "/eslint.config.mjs"
+    options:
+      internal: true
+
+  lint-package-json:
+    command: "npmPkgJsonLint ."
+    inputs:
+      - "**/package.json"
+      - "/package.json"
+      - "/.npmpackagejsonlintrc.json"
+    options:
+      internal: true

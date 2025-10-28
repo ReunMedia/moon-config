@@ -1,0 +1,24 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "!_*/**/*"
+  configs:
+    - "*.config.{js,cjs,mjs,ts}"
+    - "tsconfig*.json"
+  tests:
+    - "tests/**/*"
+    - "!_*/**/*"
+
+tasks:
+  build:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist/*"
+    deps:
+      - format
+      - lint
+      - test

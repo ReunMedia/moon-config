@@ -1,0 +1,33 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+tasks:
+  lint:
+    deps:
+      - typecheck
+      - eslint
+      - lintPkgJson
+      - format
+
+  typecheck:
+    command: "astro check"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+
+  build:
+    command: "astro build"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist/*"
+    deps:
+      - format
+      - lint
+      - test
+
+  dev:
+    command: "astro dev"
+
+  preview:
+    command: "astro preview"

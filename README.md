@@ -1,4 +1,4 @@
-# My Project
+# Reun Media moon Configuration
 
 This directory contains files every project should have. Some files
 (e.g. `.gitignore` or `.editorconfig`) are located in individual project type

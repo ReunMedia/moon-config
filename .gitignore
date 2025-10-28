@@ -86,3 +86,7 @@ phpstan.neon
 # Project #
 ###########
 # Add project specific ignores below.
+
+# moon
+.moon/cache
+.moon/docker

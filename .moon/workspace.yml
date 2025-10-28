@@ -1,0 +1,18 @@
+# https://moonrepo.dev/docs/config/workspace
+$schema: "./cache/schemas/workspace.json"
+
+projects:
+  globs:
+    - "apps/*"
+    - "packages/*"
+  sources:
+    root: "."
+
+vcs:
+  manager: "git"
+  defaultBranch: "main"
+  hooks:
+    pre-commit:
+      - "moon :lint --affected --status=staged --no-bail"
+    pre-merge:
+      - "moon :test"
