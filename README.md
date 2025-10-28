@@ -1,12 +1,36 @@
 # Reun Media moon Configuration
 
-This directory contains files every project should have. Some files
-(e.g. `.gitignore` or `.editorconfig`) are located in individual project type
-directories with more specific customizations.
+Reun Media [moon](https://moonrepo.dev/moon) configuration.
 
-This README is part of the template files, so remember to copy this to your
-project as well.
+## Installation
 
-TODO - Write a brief summary of your project.
+### Requirements
 
-TODO - Add development instructions and other useful information to this readme.
+- moon binary available in `PATH`
+
+A global installation of moon is recommended. If moon is installed locally (e.g.
+via npm), it must still be available in `PATH`.
+
+### With JS package manager
+
+```sh
+bun add -D @reunmedia/moon-config
+```
+
+### With Composer
+
+```sh
+composer require reun/moon-config
+```
+
+### Manually
+
+Copy desired configuration files manually from `.moon/**` to your project.
+
+## Usage
+
+Initialize moon:
+
+```sh
+moon init
+```
