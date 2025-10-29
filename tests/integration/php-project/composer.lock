@@ -12,13 +12,13 @@
             "dist": {
                 "type": "path",
                 "url": "../../../.",
-                "reference": "4a244363e8c87d8e050d449e4f926b8971ddb247"
+                "reference": "0ee4a654f41f26e8ef7ca8f09650800adfb1e85d"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.48"
             },
             "bin": [
-                "bin/reun-moon-config.sh"
+                "bin/reun-moon-config"
             ],
             "type": "library",
             "license": [
