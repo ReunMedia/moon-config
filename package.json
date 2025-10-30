@@ -16,6 +16,6 @@
     "prettier-plugin-packagejson": "^2.5.19"
   },
   "bin": {
-    "reun-moon-config": "reun-moon-config"
+    "reun-moon-config": "bin/reun-moon-config"
   }
 }
