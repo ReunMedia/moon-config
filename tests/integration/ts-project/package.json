@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "npm-package-json-lint": "^9.0.0",
     "typescript": "~5.9.3",
     "vite": "^7.1.7"
   },
