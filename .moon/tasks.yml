@@ -11,7 +11,27 @@ fileGroups:
     - "tests/**/*"
     - "!_*/**/*"
 
+# Specify default inputs, outputs and deps for tasks so that they can easily be
+# extended in individual projects
 tasks:
+  format:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  lint:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  test:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
   build:
     inputs:
       - "@group(sources)"
