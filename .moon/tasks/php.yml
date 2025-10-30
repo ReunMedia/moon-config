@@ -12,28 +12,16 @@ $schema: "../../cache/schemas/tasks.json"
 
 tasks:
   format:
-    command:
-      - "$workspaceRoot/vendor/bin/php-cs-fixer"
-      - "fix"
-      - "."
-      - "--config=$workspaceRoot/.php-cs-fixer.php"
-    inputs:
-      - "@group(sources)"
-      - "@group(configs)"
-      - "@group(tests)"
-      - ".php-cs-fixer.php" # Invalidate task cache on config change
+    deps:
+      - php-cs-fixer
 
   lint:
-    inputs:
-      - "@group(sources)"
-      - "@group(configs)"
-      - "@group(tests)"
     deps:
       - format
-      - lint-composer-json
-      - phpstan
       - target: lint-package-json
         optional: true
+      - lint-composer-json
+      - phpstan
 
   test:
     command: "vendor/bin/pest"
@@ -44,6 +32,20 @@ tasks:
 
   dev:
     command: "composer dev"
+
+  php-cs-fixer:
+    command:
+      - "$workspaceRoot/vendor/bin/php-cs-fixer"
+      - "fix"
+      - "."
+      - "--config=$workspaceRoot/.php-cs-fixer.php"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+      - ".php-cs-fixer.php" # Invalidate task cache on config change
+    options:
+      internal: true
 
   phpstan:
     command: "$workspaceRoot/vendor/bin/phpstan"
