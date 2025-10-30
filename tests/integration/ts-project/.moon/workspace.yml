@@ -1,0 +1,3 @@
+$schema: "./cache/schemas/workspace.json"
+
+extends: "./../node_modules/@reunmedia/moon-config/.moon/workspace.yml"
