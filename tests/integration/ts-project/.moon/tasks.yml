@@ -1,3 +1,66 @@
+#
+# Reun Media global moon tasks
+#
+# See `tasks/*.yml` for list of dependencies.
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
+
 $schema: "./cache/schemas/tasks.json"
 
-extends: "./../node_modules/@reunmedia/moon-config/.moon/tasks.yml"
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "!_*/**/*"
+  configs:
+    - "*.config.{js,cjs,mjs,ts}"
+    - "tsconfig*.json"
+  tests:
+    - "tests/**/*"
+    - "!_*/**/*"
+
+tasks:
+  build:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist/*"
+    deps:
+      - target: format
+        optional: true
+      - target: lint
+        optional: true
+      - target: test
+        optional: true
+
+  # This task is defined globally to make it available for projects written with
+  # multiple languages (e.g. PHP and TypeScript).
+  #
+  # `npm-package-json-lint` should be installed only in the root project.
+  lint-package-json:
+    command: bun run npmPkgJsonLint $projectRoot/package.json
+    inputs:
+      - "package.json"
+      - ".npmpackagejsonlintrc.json"
+    options:
+      internal: true
+
+  # This task is defined globally to make it available for projects written with
+  # multiple languages (e.g. PHP and TypeScript)
+  #
+  # `composer-normalize` should be installed only in the root project.
+  lint-composer-json:
+    script: >
+      composer validate
+      && composer normalize $projectRoot/composer.json
+    inputs:
+      - "composer.json"
+      - "composer.lock"
+    options:
+      internal: true

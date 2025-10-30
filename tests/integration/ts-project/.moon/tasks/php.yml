@@ -1,3 +1,64 @@
-$schema: "./../cache/schemas/tasks.json"
+#
+# Reun Media PHP moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - ergebnis/composer-normalize (install in root project)
+# - friendsofphp/php-cs-fixer (install in root project)
+# - phpstan/phpstan (install in root project)
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
 
-extends: "./../../node_modules/@reunmedia/moon-config/.moon/tasks/php.yml"
+$schema: "../../cache/schemas/tasks.json"
+
+tasks:
+  format:
+    deps:
+      - php-cs-fixer
+
+  lint:
+    deps:
+      - format
+      - target: lint-package-json
+        optional: true
+      - lint-composer-json
+      - phpstan
+
+  test:
+    command: "vendor/bin/pest"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  dev:
+    command: "composer dev"
+
+  php-cs-fixer:
+    command:
+      - "$workspaceRoot/vendor/bin/php-cs-fixer"
+      - "fix"
+      - "."
+      - "--config=$workspaceRoot/.php-cs-fixer.php"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+      - ".php-cs-fixer.php" # Invalidate task cache on config change
+    options:
+      internal: true
+
+  phpstan:
+    command: "$workspaceRoot/vendor/bin/phpstan"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "phpstan.dist.neon" # Invalidate task cache on config change
+    options:
+      internal: true

@@ -1,3 +1,85 @@
-$schema: "./../cache/schemas/tasks.json"
+#
+# Reun Media Bun moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - @reunmedia/eslint-config
+# - eslint
+# - npm-package-json-lint
+# - npm-package-json-lint-config-default
+# - prettier
+# - prettier-plugin-packagejson
+# - typescript-eslint
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
 
-extends: "./../../node_modules/@reunmedia/moon-config/.moon/tasks/bun.yml"
+$schema: "../../cache/schemas/tasks.json"
+
+tasks:
+  format:
+    deps:
+      - prettier
+
+  lint:
+    deps:
+      - format
+      - lint-package-json
+      - eslint
+
+  test:
+    command: "bun test"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+
+  dev:
+    command: "bun dev"
+
+  prettier:
+    command:
+      - "bun"
+      - "prettier"
+      # Use the same config for the entire repo
+      - "--config"
+      - "@in(0)"
+      # Use .prettierignore...
+      - "--ignore-path"
+      - "@in(1)"
+      # ... and .gitignore
+      - "--ignore-path"
+      - "@in(2)"
+      # Fail for unformatted code
+      - "--check"
+      # Run in current dir
+      - "."
+    inputs:
+      # Use project-specific configs that extend root config
+      - "prettier.config.mjs"
+      # Use global .prettierignore and .gitignore
+      - "/.prettierignore"
+      - "/.gitignore"
+      # Config and other files
+      - "**/*.{md,mdx,yml,yaml,json,js,mjs,ts}"
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+    options:
+      internal: true
+
+  eslint:
+    command: "bun eslint"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+      - "**/eslint.config.mjs"
+      - "/eslint.config.mjs"
+    options:
+      internal: true

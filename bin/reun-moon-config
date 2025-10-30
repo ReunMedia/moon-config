@@ -44,34 +44,6 @@ _run() {
   # Recursively loop through all shared config `.yml` files in package directory
   cd "${PACKAGE_DIRECTORY}" || exit 2
   find ".moon" -type f -name "*.yml" | while read -r FILE; do
-    FILE_BASENAME=$(basename "$FILE")
-
-    # Count directory depth of the file
-    DEPTH=$(tr -dc '/' <<<"$FILE" | wc -c)
-
-    # Construct relative path to `.moon` from this file
-    RELATIVE_MOON_PATH="."
-    if ((DEPTH > 1)); then
-      for _ in $(eval "echo {2..${DEPTH}}"); do RELATIVE_MOON_PATH+="/.."; done
-    fi
-
-    # Set relative path to schema file
-    SCHEMA_DIRECTORY="${RELATIVE_MOON_PATH}/cache/schemas"
-    SCHEMA_FILE=$( [[ "${FILE_BASENAME}" == "workspace.yml" ]] \
-      && echo "${SCHEMA_DIRECTORY}/workspace.json" \
-      || echo "${SCHEMA_DIRECTORY}/tasks.json" )
-
-    # Set relative path to config file
-    CONFIG_FILE="${RELATIVE_MOON_PATH}/../${PACKAGE_DIRECTORY}/${FILE}"
-
-    # Construct YAML template
-    TEMPLATE=$(cat <<YML
-\$schema: "$SCHEMA_FILE"
-
-extends: "$CONFIG_FILE"
-YML
-)
-
     TARGET_FILE_PATH="${ROOT_DIRECTORY}/${FILE}"
 
     # Confirm file overwrite
@@ -84,8 +56,9 @@ YML
     # Create parent directories for target file if they don't exist
     mkdir -p "$(dirname "${TARGET_FILE_PATH}")"
 
-    # Write template configuration to file
-    echo "${TEMPLATE}" > "${TARGET_FILE_PATH}"
+    # Copy configuration file to directory
+    cp "${FILE}" "${TARGET_FILE_PATH}"
+
     echo "Wrote configuration to '${FILE}'"
   done
 }

@@ -1,3 +1,28 @@
+#
+# Reun Media Bun moon workspace configuration
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
+
 $schema: "./cache/schemas/workspace.json"
 
-extends: "./../node_modules/@reunmedia/moon-config/.moon/workspace.yml"
+projects:
+  globs:
+    - "apps/*"
+    - "packages/*"
+  sources:
+    root: "."
+
+vcs:
+  manager: "git"
+  defaultBranch: "main"
+  hooks:
+    pre-commit:
+      - "moon :lint --affected --status=staged --no-bail"
+    pre-merge:
+      - "moon :test"

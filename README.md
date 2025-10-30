@@ -44,12 +44,12 @@ if you aren't running Bash.
 
 ```sh
 # npm installation
-bun run reun-moon-config
+bun reun-moon-config
 ```
 
 ```sh
 # Composer installation
-vendor/bin/reun-moon-config
+./vendor/bin/reun-moon-config
 ```
 
 ### Enable Git hooks
@@ -77,7 +77,7 @@ dependencies, you can exclude them in local project's `moon.yml`:
 workspace:
   inheritedTasks:
     exclude:
-      - format
+      - php-cs-fixer
       - phpstan
       - lint-package-json
 

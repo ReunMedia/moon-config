@@ -7,6 +7,13 @@
 # - friendsofphp/php-cs-fixer (install in root project)
 # - phpstan/phpstan (install in root project)
 #
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
 
 $schema: "../../cache/schemas/tasks.json"
 

@@ -5,6 +5,13 @@
 #
 # See also `.moon/tasks/bun.yml`
 #
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-configs
+#
+# @version 1.0.0
+#
 
 $schema: "../../cache/schemas/tasks.json"
 

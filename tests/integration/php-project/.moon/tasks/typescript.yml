@@ -1,3 +1,0 @@
-$schema: "./../cache/schemas/tasks.json"
-
-extends: "./../../vendor/reun/moon-config/.moon/tasks/typescript.yml"

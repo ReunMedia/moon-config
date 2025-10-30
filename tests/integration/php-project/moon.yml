@@ -1,5 +1,6 @@
 workspace:
   inheritedTasks:
     exclude:
-      - format
+      - php-cs-fixer
       - phpstan
+      - test

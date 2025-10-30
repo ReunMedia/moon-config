@@ -3,8 +3,20 @@
 #
 # Requires following packages for full functionality:
 #
-# - prettier (install in root project)
-# - eslint (install in root project)
+# - @reunmedia/eslint-config
+# - eslint
+# - npm-package-json-lint
+# - npm-package-json-lint-config-default
+# - prettier
+# - prettier-plugin-packagejson
+# - typescript-eslint
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
 #
 
 $schema: "../../cache/schemas/tasks.json"
