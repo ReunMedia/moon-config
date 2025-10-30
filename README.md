@@ -52,6 +52,14 @@ bun run reun-moon-config
 vendor/bin/reun-moon-config
 ```
 
+### Enable Git hooks
+
+Git hooks are not enabled by default and must be synced manually.
+
+```sh
+moon sync hooks
+```
+
 ### Task package dependencies
 
 Most tasks require specific dependencies to be installed. See the comments in
