@@ -3,7 +3,7 @@
 #
 # Requires following packages for full functionality:
 #
-# See also `.moon/tasks/bun.yml` and `.moon/tasks/typescript.yml`
+# See also `.moon/tasks/bun.yml`
 #
 
 $schema: "../../cache/schemas/tasks.json"
@@ -11,10 +11,10 @@ $schema: "../../cache/schemas/tasks.json"
 tasks:
   lint:
     deps:
-      - typecheck
-      - eslint
-      - lintPkgJson
       - format
+      - lint-package-json
+      - eslint
+      - typecheck
 
   typecheck:
     command: "astro check"

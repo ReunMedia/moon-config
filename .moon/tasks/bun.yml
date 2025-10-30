@@ -1,12 +1,25 @@
 #
 # Reun Media Bun moon tasks
 #
-# See also `.moon/tasks/typescript.yml`
+# Requires following packages for full functionality:
+#
+# - prettier (install in root project)
+# - eslint (install in root project)
 #
 
 $schema: "../../cache/schemas/tasks.json"
 
 tasks:
+  format:
+    deps:
+      - prettier
+
+  lint:
+    deps:
+      - format
+      - lint-package-json
+      - eslint
+
   test:
     command: "bun test"
     inputs:
@@ -16,3 +29,45 @@ tasks:
 
   dev:
     command: "bun dev"
+
+  prettier:
+    command:
+      - "bun"
+      - "prettier"
+      # Use the same config for the entire repo
+      - "--config"
+      - "@in(0)"
+      # Use .prettierignore...
+      - "--ignore-path"
+      - "@in(1)"
+      # ... and .gitignore
+      - "--ignore-path"
+      - "@in(2)"
+      # Fail for unformatted code
+      - "--check"
+      # Run in current dir
+      - "."
+    inputs:
+      # Use project-specific configs that extend root config
+      - "prettier.config.mjs"
+      # Use global .prettierignore and .gitignore
+      - "/.prettierignore"
+      - "/.gitignore"
+      # Config and other files
+      - "**/*.{md,mdx,yml,yaml,json,js,mjs,ts}"
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+    options:
+      internal: true
+
+  eslint:
+    command: "bun eslint"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
+      - "**/eslint.config.mjs"
+      - "/eslint.config.mjs"
+    options:
+      internal: true
