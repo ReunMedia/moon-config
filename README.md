@@ -21,7 +21,7 @@ bun add -D @reunmedia/moon-config
 ### With Composer
 
 ```sh
-composer require reun/moon-config
+composer require --dev reun/moon-config
 ```
 
 ### Manually
