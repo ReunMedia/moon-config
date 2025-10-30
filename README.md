@@ -52,10 +52,28 @@ bun run reun-moon-config
 vendor/bin/reun-moon-config
 ```
 
+### Task package dependencies
+
+Most tasks require specific dependencies to be installed. See the comments in
+`.moon/**/*.yml` for list of packages to install. You may [disable specific
+tasks](#disabling-specific-tasks-in-project) to avoid installing all
+dependencies.
+
 ### Disabling specific tasks in project
 
 If you don't want or can't use specific tasks in projects e.g. due to missing
-dependencies, you can override
+dependencies, you can exclude them in local project's `moon.yml`:
+
+```yml
+# Example of a PHP project without `php-cs-fixer`, `phpstan` and `package.json`
+workspace:
+  inheritedTasks:
+    exclude:
+      - format
+      - phpstan
+      - lint-package-json
+
+```
 
 ## Upgrading
 

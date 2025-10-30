@@ -1,3 +1,14 @@
+#
+# Reun Media Typescript moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - prettier (install in root project)
+# - eslint (install in root project)
+#
+# See also `.moon/tasks/bun.yml`
+#
+
 $schema: "../../cache/schemas/tasks.json"
 
 tasks:

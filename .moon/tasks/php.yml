@@ -1,3 +1,13 @@
+#
+# Reun Media PHP moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - ergebnis/composer-normalize (install in root project)
+# - friendsofphp/php-cs-fixer (install in root project)
+# - phpstan/phpstan (install in root project)
+#
+
 $schema: "../../cache/schemas/tasks.json"
 
 tasks:
