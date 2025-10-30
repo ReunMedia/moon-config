@@ -6,6 +6,7 @@
 # - ergebnis/composer-normalize (install in root project)
 # - friendsofphp/php-cs-fixer (install in root project)
 # - phpstan/phpstan (install in root project)
+# - pestphp/pest (install in root project)
 #
 # @author Reun Media <company@reun.eu>
 # @copyright 2025 Reun Media
