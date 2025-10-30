@@ -45,12 +45,3 @@ tasks:
       - "/eslint.config.mjs"
     options:
       internal: true
-
-  lint-package-json:
-    command: "npmPkgJsonLint ."
-    inputs:
-      - "**/package.json"
-      - "/package.json"
-      - "/.npmpackagejsonlintrc.json"
-    options:
-      internal: true

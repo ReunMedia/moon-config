@@ -14,10 +14,16 @@ tasks:
       - ".php-cs-fixer.php" # Invalidate task cache on config change
 
   lint:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
     deps:
       - format
       - lint-composer-json
       - phpstan
+      - target: lint-package-json
+        optional: true
 
   test:
     command: "vendor/bin/pest"
@@ -28,17 +34,6 @@ tasks:
 
   dev:
     command: "composer dev"
-
-  lint-composer-json:
-    script: >
-      composer validate
-      && cd $workspaceRoot
-      && composer normalize $projectSource/composer.json
-    inputs:
-      - "composer.json"
-      - "composer.lock"
-    options:
-      internal: true
 
   phpstan:
     command: "$workspaceRoot/vendor/bin/phpstan"

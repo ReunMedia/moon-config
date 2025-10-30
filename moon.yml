@@ -1,0 +1,7 @@
+$schema: "./.moon/cache/schemas/tasks.json"
+
+workspace:
+  inheritedTasks:
+    exclude:
+      - format
+      - phpstan
