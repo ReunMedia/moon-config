@@ -44,8 +44,6 @@ _run() {
   # Recursively loop through all shared config `.yml` files in package directory
   cd "${PACKAGE_DIRECTORY}" || exit 2
   find ".moon" -type f -name "*.yml" | while read -r FILE; do
-    # echo "$FILE"
-
     FILE_BASENAME=$(basename "$FILE")
 
     # Count directory depth of the file
@@ -82,6 +80,9 @@ YML
         continue
       fi
     fi;
+
+    # Create parent directories for target file if they don't exist
+    mkdir -p "$(dirname "${TARGET_FILE_PATH}")"
 
     # Write template configuration to file
     echo "${TEMPLATE}" > "${TARGET_FILE_PATH}"
