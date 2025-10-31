@@ -7,7 +7,8 @@
   "type": "module",
   "files": [
     ".moon",
-    "bin/reun-moon-config"
+    "bin/reun-moon-config",
+    "CHANGELOG.md"
   ],
   "devDependencies": {
     "npm-package-json-lint": "^9.0.0",
