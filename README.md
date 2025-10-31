@@ -1,5 +1,8 @@
 # Reun Media moon Configuration
 
+[![NPM Version](https://img.shields.io/npm/v/%40reunmedia%2Fmoon-config)](https://www.npmjs.com/package/@reunmedia/moon-config)
+[![Packagist Version](https://img.shields.io/packagist/v/reun/moon-config)](https://packagist.org/packages/reun/moon-config)
+
 Reun Media [moon](https://moonrepo.dev/moon) configuration.
 
 ## Installation
