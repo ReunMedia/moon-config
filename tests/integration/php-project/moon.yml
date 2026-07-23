@@ -4,3 +4,5 @@ workspace:
       - php-cs-fixer
       - phpstan
       - test
+
+language: php

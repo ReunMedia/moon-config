@@ -6,6 +6,7 @@
 # - ergebnis/composer-normalize (install in root project)
 # - friendsofphp/php-cs-fixer (install in root project)
 # - phpstan/phpstan (install in root project)
+# - pestphp/pest (install in root project)
 #
 # @author Reun Media <company@reun.eu>
 # @copyright 2025 Reun Media
@@ -15,7 +16,10 @@
 # @version 1.0.0
 #
 
-$schema: "../../cache/schemas/tasks.json"
+$schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  language: php
 
 tasks:
   format:
@@ -31,8 +35,11 @@ tasks:
       - phpstan
 
   test:
-    deps:
-      - pest
+    command: "vendor/bin/pest"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+      - "@group(tests)"
 
   dev:
     command: "composer dev"
@@ -60,9 +67,12 @@ tasks:
     options:
       internal: true
 
-  pest:
-    command: "vendor/bin/pest"
+  lint-composer-json:
+    script: >
+      composer validate
+      && composer normalize $projectRoot/composer.json
     inputs:
-      - "@group(sources)"
-      - "@group(configs)"
-      - "@group(tests)"
+      - "composer.json"
+      - "composer.lock"
+    options:
+      internal: true

@@ -3,3 +3,8 @@ workspace:
     exclude:
       - format
       - eslint
+
+language: typescript
+
+toolchains:
+  default: ["javascript", "bun"]

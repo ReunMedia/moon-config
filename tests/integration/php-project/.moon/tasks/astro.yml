@@ -13,7 +13,10 @@
 # @version 1.0.0
 #
 
-$schema: "../../cache/schemas/tasks.json"
+$schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  tag: astro
 
 tasks:
   lint:

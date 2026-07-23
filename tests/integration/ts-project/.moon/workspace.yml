@@ -19,7 +19,7 @@ projects:
     root: "."
 
 vcs:
-  manager: "git"
+  client: "git"
   defaultBranch: "main"
   hooks:
     pre-commit:
