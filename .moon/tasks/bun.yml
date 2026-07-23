@@ -83,3 +83,6 @@ tasks:
       - "/eslint.config.mjs"
     options:
       internal: true
+
+inheritedBy:
+  toolchain: bun
