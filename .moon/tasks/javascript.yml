@@ -1,0 +1,15 @@
+$schema: "../cache/schemas/tasks.json"
+
+tasks:
+  lint-package-json:
+    command:
+      - bun
+      - npmPkgJsonLint
+      - --config
+      - "@in(0)"
+      - .
+    inputs:
+      - /.npmpackagejsonlintrc.json
+      - package.json
+    options:
+      internal: true
