@@ -18,6 +18,9 @@
 
 $schema: "../cache/schemas/tasks.json"
 
+inheritedBy:
+  language: php
+
 tasks:
   format:
     deps:
@@ -61,5 +64,15 @@ tasks:
       - "@group(sources)"
       - "@group(configs)"
       - "phpstan.dist.neon" # Invalidate task cache on config change
+    options:
+      internal: true
+
+  lint-composer-json:
+    script: >
+      composer validate
+      && composer normalize $projectRoot/composer.json
+    inputs:
+      - "composer.json"
+      - "composer.lock"
     options:
       internal: true

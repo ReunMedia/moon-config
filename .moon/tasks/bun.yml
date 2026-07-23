@@ -5,8 +5,6 @@
 #
 # - @reunmedia/eslint-config
 # - eslint
-# - npm-package-json-lint
-# - npm-package-json-lint-config-default
 # - prettier
 # - prettier-plugin-packagejson
 # - typescript-eslint
@@ -20,6 +18,9 @@
 #
 
 $schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  toolchain: bun
 
 tasks:
   format:
@@ -83,6 +84,3 @@ tasks:
       - "/eslint.config.mjs"
     options:
       internal: true
-
-inheritedBy:
-  toolchain: bun

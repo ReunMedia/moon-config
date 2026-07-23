@@ -1,10 +1,29 @@
+#
+# Reun Media JavaScript moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - npm-package-json-lint
+# - npm-package-json-lint-config-default
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2026 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 1.0.0
+#
+
 $schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  languages: [javascript, typescript]
 
 tasks:
   lint-package-json:
     command:
-      - bun
-      - npmPkgJsonLint
+      - npx
+      - npm-package-json-lint
       - --config
       - "@in(0)"
       - .
