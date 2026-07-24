@@ -1,6 +1,8 @@
 #
 # Astro bun extension
 #
+# This file runs Astro task commands with Bun
+#
 # See `.moon/tasks/astro.yml`
 #
 

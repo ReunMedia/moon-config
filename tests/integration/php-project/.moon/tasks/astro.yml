@@ -3,6 +3,9 @@
 #
 # Requires following packages for full functionality:
 #
+# - @astrojs/check
+# - typescript@^6
+#
 # See also `.moon/tasks/bun.yml`
 #
 # @author Reun Media <company@reun.eu>
@@ -10,7 +13,7 @@
 #
 # @see https://github.com/ReunMedia/moon-configs
 #
-# @version 2.0.0
+# @version 2.1.0
 #
 
 $schema: "../cache/schemas/tasks.json"
@@ -22,7 +25,7 @@ tasks:
   lint:
     deps:
       - format
-      - lint-package-json
+      - root:lint-package-json
       - eslint
       - typecheck
 
@@ -49,3 +52,6 @@ tasks:
 
   preview:
     command: "astro preview"
+    deps:
+      - "build"
+    preset: "server"
