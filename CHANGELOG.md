@@ -22,4 +22,5 @@ _If you are upgrading: please see [`UPGRADING.md`](UPGRADING.md)._
 
 Initial release.
 
+[0.3.0]: https://github.com/ReunMedia/moon-config/releases/tag/0.3.0
 [0.2.0]: https://github.com/ReunMedia/moon-config/releases/tag/0.2.0
