@@ -32,3 +32,4 @@ tasks:
       - package.json
     options:
       internal: true
+      runFromWorkspaceRoot: true

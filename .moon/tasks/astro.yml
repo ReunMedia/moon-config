@@ -22,7 +22,7 @@ tasks:
   lint:
     deps:
       - format
-      - lint-package-json
+      - root:lint-package-json
       - eslint
       - typecheck
 
