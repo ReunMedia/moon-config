@@ -4,10 +4,11 @@ _yesNo() {
   MESSAGE=$1
   while true; do
     # Using `</dev/tty` allows us to use this inside the `while read` loop
-    read -r -p "${MESSAGE} (Y/n) " yn </dev/tty
+    read -r -p "${MESSAGE} (Y/n/a) " yn </dev/tty
     case $yn in
         [Yy]* ) return 0;;
         [Nn]* ) return 1;;
+        [Aa]* ) return 2;;
         "" ) return ;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -43,13 +44,21 @@ _run() {
 
   # Recursively loop through all shared config `.yml` files in package directory
   cd "${PACKAGE_DIRECTORY}" || exit 2
+  OVERWRITE_ALL=0
   find ".moon" -type f -name "*.yml" | while read -r FILE; do
     TARGET_FILE_PATH="${ROOT_DIRECTORY}/${FILE}"
 
     # Confirm file overwrite
-    if [ -e "${TARGET_FILE_PATH}" ]; then
-      if ! _yesNo "Overwrite '${FILE}'?"; then
+    if [ $OVERWRITE_ALL == 0 ] && [ -e "${TARGET_FILE_PATH}" ]; then
+      _yesNo "Overwrite '${FILE}'?"
+      OVERWRITE_THIS=$?
+
+      if [[ "$OVERWRITE_THIS" == 1 ]]; then
         continue
+      fi
+
+      if [ "$OVERWRITE_THIS" == 2 ]; then
+        OVERWRITE_ALL=1
       fi
     fi;
 
