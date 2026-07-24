@@ -1,0 +1,33 @@
+#
+# Astro bun extension
+#
+# See `.moon/tasks/astro.yml`
+#
+
+$schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  toolchain: bun
+  tag: astro
+
+tasks:
+  astro:
+    command: "bun astro"
+    options:
+      merge: replace
+  typecheck:
+    command: "bun astro check"
+    options:
+      merge: replace
+  dev:
+    command: "bun astro dev"
+    options:
+      merge: replace
+  build:
+    command: "bun astro build"
+    options:
+      merge: replace
+  preview:
+    command: "bun astro preview"
+    options:
+      merge: replace

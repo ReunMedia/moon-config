@@ -1,0 +1,40 @@
+#
+# Reun Media global moon tasks
+#
+# See `tasks/*.yml` for list of dependencies.
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-config
+#
+# @version 2.0.0
+#
+
+$schema: "../cache/schemas/tasks.json"
+
+fileGroups:
+  sources:
+    - "src/**/*"
+    - "!_*/**/*"
+  configs:
+    - "*.config.{js,cjs,mjs,ts}"
+    - "tsconfig*.json"
+  tests:
+    - "tests/**/*"
+    - "!_*/**/*"
+
+tasks:
+  build:
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist/*"
+    deps:
+      - target: format
+        optional: true
+      - target: lint
+        optional: true
+      - target: test
+        optional: true

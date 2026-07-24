@@ -1,0 +1,15 @@
+workspace:
+  inheritedTasks:
+    exclude:
+      - format
+      - eslint
+
+language: typescript
+
+toolchains:
+  default: bun
+  # Disable project references for Astro
+  typescript:
+    syncProjectReferences: false
+
+tags: [astro]

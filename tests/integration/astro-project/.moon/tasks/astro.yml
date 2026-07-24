@@ -1,0 +1,54 @@
+#
+# Reun Media Astro moon tasks
+#
+# Requires following packages for full functionality:
+#
+# - @astrojs/check
+# - typescript@^6
+#
+# See also `.moon/tasks/bun.yml`
+#
+# @author Reun Media <company@reun.eu>
+# @copyright 2025 Reun Media
+#
+# @see https://github.com/ReunMedia/moon-configs
+#
+# @version 2.1.0
+#
+
+$schema: "../cache/schemas/tasks.json"
+
+inheritedBy:
+  tag: astro
+
+tasks:
+  lint:
+    deps:
+      - format
+      - root:lint-package-json
+      - eslint
+      - typecheck
+
+  typecheck:
+    command: "astro check"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+
+  build:
+    command: "astro build"
+    inputs:
+      - "@group(sources)"
+      - "@group(configs)"
+    outputs:
+      - "dist/*"
+    deps:
+      - format
+      - lint
+      - test
+
+  dev:
+    command: "astro dev"
+
+  preview:
+    command: "astro preview"
