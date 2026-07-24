@@ -55,6 +55,31 @@ bun reun-moon-config
 ./vendor/bin/reun-moon-config
 ```
 
+Sync YAML schemas:
+
+```sh
+moon sync config-schemas
+```
+
+### Configure task inheritance
+
+Add relevant languages, toolchains and tasks to each project's `moon.yml` for
+task inheritance. See `inheritedBy` in `./moon/tasks/*.yml` to see which
+configuration enables task inheritance for that specific file.
+
+```yml
+# packages/php-project/moon.yml
+language: php # Inherits PHP tasks
+```
+
+```yml
+# packages/astro-project/moon.yml
+language: typescript # Inherits JS/TS tasks
+toolchains:
+  default: bun # Inherits Bun tasks
+tags: [astro] # Inherits Astro tasks
+```
+
 ### Enable Git hooks
 
 Git hooks are not enabled by default and must be synced manually.
@@ -83,7 +108,6 @@ workspace:
       - php-cs-fixer
       - phpstan
       - lint-package-json
-
 ```
 
 ## Upgrading
@@ -94,3 +118,5 @@ tasks after upgrading to a new version.
 ```sh
 moon clean --lifetime 0
 ```
+
+See [UPGRADING.md](UPGRADING.md) for upgrade notes between versions.

@@ -1,5 +1,12 @@
 # Upgrade Guide
 
+[Clean](https://moonrepo.dev/docs/commands/clean) moon cache to refresh
+tasks after upgrading to a new version.
+
+```sh
+moon clean --lifetime 0
+```
+
 ## 0.1 to 0.2
 
 1. Run `bun reun-moon-config`
