@@ -52,3 +52,6 @@ tasks:
 
   preview:
     command: "astro preview"
+    deps:
+      - "build"
+    preset: "server"
