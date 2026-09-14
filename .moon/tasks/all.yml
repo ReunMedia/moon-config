@@ -20,6 +20,7 @@ fileGroups:
   configs:
     - "*.config.{js,cjs,mjs,ts}"
     - "tsconfig*.json"
+    - ".env*"
   tests:
     - "tests/**/*"
     - "!_*/**/*"
