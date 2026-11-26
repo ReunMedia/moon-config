@@ -14,6 +14,8 @@ _Remove previous hooks from `.moon/hooks` and run `moon sync hooks` to update Gi
 
 - Use `moon run` for Git hooks
 - Remove `--no-bail` from lint Git hook (it was [removed in moon 2](https://moonrepo.dev/docs/migrate/2.0#moon-run))
+- Fix Astro moon tasks build output
+- Add `.env*` too config sources
 
 ## [0.3.2] - 2026-07-24
 
